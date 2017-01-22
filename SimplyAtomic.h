@@ -1,0 +1,28 @@
+/*
+    SimplyAtomic: Finally a portable way to impliment atomic blocks
+*/
+
+#ifndef SIMPLY_ATOMIC_h
+#define SIMPLY_ATOMIC_h
+
+#ifdef ARDUINO
+    #include <Arduino.h>
+#else
+    #include <stdint.h>
+#endif
+
+
+#if defined(__AVR__)
+    #include "avr.h"
+
+#elif defined(ARDUINO_ARCH_ESP8266)
+    #include "esp8266.h"
+
+#elif defined(__arm__)
+    #include "arm.h"
+
+#endif
+
+
+
+#endif
