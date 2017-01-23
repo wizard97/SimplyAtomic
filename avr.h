@@ -1,7 +1,16 @@
 // Source:
 // http://www.nongnu.org/avr-libc/user-manual/atomic_8h_source.html
-#include <avr/io.h>
 
+#ifndef SA_AVR_h
+#define SA_AVR_h
+
+#ifdef ARDUINO
+    #include <Arduino.h>
+#else
+    #include <stdint.h>
+#endif
+
+#include <avr/io.h>
 /******************** HELPERS ***********************/
 static __inline__ uint8_t __iSeiRetVal(void)
 {
@@ -40,6 +49,9 @@ static __inline__ void __iRestore(const  uint8_t *__s)
 
 /******************** MACRO ***********************/
 
-#define ATOMIC()
-for (ATOMIC_RESTORESTATE, uint8_t _sa_done =  __iCliRetVal();           \
+#define ATOMIC()                                                        \
+for ( ATOMIC_RESTORESTATE, _sa_done =  __iCliRetVal();                  \
     _sa_done; _sa_done = 0 )
+
+
+#endif

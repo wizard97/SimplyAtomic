@@ -5,13 +5,6 @@
 #ifndef SIMPLY_ATOMIC_h
 #define SIMPLY_ATOMIC_h
 
-#ifdef ARDUINO
-    #include <Arduino.h>
-#else
-    #include <stdint.h>
-#endif
-
-
 #if defined(__AVR__)
     #include "avr.h"
 
