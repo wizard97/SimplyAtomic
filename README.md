@@ -31,3 +31,6 @@ ATOMIC()
 - ARM (Zero, Due, etc...)
 - ESP8266
 - ESP32
+
+## License
+BSD
