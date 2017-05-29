@@ -2,10 +2,10 @@
 Finally a portable way to implement atomic blocks of code within Arduino projects.
 
 ## Background
-Many projects need a way to disable interrupts, perform some atomic operation, then restore the interrupt register to its previous state. 
+Many projects need a way to disable interrupts, perform some atomic operation, then restore the interrupt register to its previous state.
 A common solution is found in the AVRs `util/atomic.h` using these macros:
 ```c++
-ATOMIC_BLOCK(ATOMIC_RESTORESTATE) 
+ATOMIC_BLOCK(ATOMIC_RESTORESTATE)
 {
   // Do some atomic operation inside here
 }
@@ -30,3 +30,4 @@ ATOMIC()
 - AVR (Uno, Mega, etc...)
 - ARM (Zero, Due, etc...)
 - ESP8266
+- ESP32
