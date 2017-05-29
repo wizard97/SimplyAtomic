@@ -12,13 +12,13 @@
 
 #include <avr/io.h>
 /******************** HELPERS ***********************/
-static __inline__ uint8_t __iSeiRetVal(void)
+static __inline__ uint8_t SA_iSeiRetVal(void)
 {
     sei();
     return 1;
 }
 
-static __inline__ uint8_t __iCliRetVal(void)
+static __inline__ uint8_t SA_iCliRetVal(void)
 {
     cli();
     return 1;
@@ -38,19 +38,19 @@ static __inline__ void __iCliParam(const uint8_t *__s)
     (void)__s;
 }
 */
-static __inline__ void __iRestore(const  uint8_t *__s)
+static __inline__ void SA_iRestore(const  uint8_t *__s)
 {
     SREG = *__s;
     __asm__ volatile ("" ::: "memory");
 }
 
-#define ATOMIC_RESTORESTATE uint8_t _sa_saved                           \
-    __attribute__((__cleanup__(__iRestore))) = SREG
+#define SA_ATOMIC_RESTORESTATE uint8_t _sa_saved                           \
+    __attribute__((__cleanup__(SA_iRestore))) = SREG
 
 /******************** MACRO ***********************/
 
 #define ATOMIC()                                                        \
-for ( ATOMIC_RESTORESTATE, _sa_done =  __iCliRetVal();                  \
+for ( SA_ATOMIC_RESTORESTATE, _sa_done =  SA_iCliRetVal();                  \
     _sa_done; _sa_done = 0 )
 
 
