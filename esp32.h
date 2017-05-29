@@ -1,6 +1,3 @@
-// Source:
-// https://github.com/esp8266/Arduino/issues/615
-
 #ifndef SA_ESP32_h
 #define SA_ESP32_h
 
